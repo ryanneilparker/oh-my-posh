@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+	  "max_depth": 3,
+          "foreground": "#15C2CB",
+          "template": "{{ .Path }} ",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#F141A8",
+          "template": "<#F3EFF5>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "properties": {
+            "branch_icon": "\ue0a0 "
+          }
+        },
+        {
+          "type": "project",
+          "style": "plain",
+          "foreground": "#5EADF2",
+          "template": "{{if .Version}}<#F3EFF5>is</> \uf487 {{.Version}} {{end}}"
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "#44FFD2",
+          "template": "<#F3EFF5>via</> \ue718 {{ .Full }} ",
+          "properties": {
+            "fetch_version": true
+          }
+        },
+        {
+          "type": "npm",
+          "style": "plain",
+          "foreground": "#FE4A49",
+          "template": "<#F3EFF5>and</> \ue71e {{.Full}} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FFE45E",
+          "template": "❯ "
+        }
+      ],
+      "newline": true
+    }
+  ]
+}
